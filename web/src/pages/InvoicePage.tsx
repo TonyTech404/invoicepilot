@@ -186,7 +186,8 @@ function Field({
         <label htmlFor={id} className="text-[13px] text-ink-soft">
           {def.label}
         </label>
-        <Confidence value={inv.confidence[def.key]} />
+        {/* A supplier matched by ABN is known, so how well its name was read no longer matters. */}
+        <Confidence value={def.key === 'supplier_name' && inv.supplier_known ? undefined : inv.confidence[def.key]} />
       </div>
       <input
         id={id}
