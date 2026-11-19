@@ -7,13 +7,14 @@ import { approveInvoice, getInvoice, listInvoices, patchInvoice, postInvoice } f
 import { reconcile } from '../src/reconcile.js';
 
 const enabled = !!process.env.DATABASE_URL;
+// Each test makes dozens of sequential round trips; CI runners sit far from the database.
 
 describe.skipIf(!enabled)('posting to MYOB when responses get lost', () => {
   let ws: Workspace;
 
   beforeAll(async () => {
     ws = await createWorkspace(`test-${Date.now()}`);
-  }, 30_000);
+  }, 120_000);
 
   afterAll(async () => {
     if (ws) await deleteWorkspace(ws.id);
@@ -33,7 +34,7 @@ describe.skipIf(!enabled)('posting to MYOB when responses get lost', () => {
     expect(posted.sync?.log.map((a) => a.outcome)).toEqual(['uncertain', 'found']);
     expect(posted.events.at(-1)?.kind).toBe('post_found_existing');
     expect(await billsFor('INV-00911')).toBe(1);
-  }, 30_000);
+  }, 120_000);
 
   it('with the guard off, the retry posts a second bill and reconciliation catches it', async () => {
     await updateSettings(ws.id, { myob_mode: 'lost_responses', idempotency_guard: false });
@@ -50,7 +51,7 @@ describe.skipIf(!enabled)('posting to MYOB when responses get lost', () => {
     const report = await reconcile(ws.id);
     const row = report.rows.find((r) => r.supplier_invoice_number === 'CT-3302')!;
     expect(row.kind).toBe('duplicate_in_myob');
-  }, 30_000);
+  }, 120_000);
 
   it('MYOB rejects an inactive account, and the job fails without retrying', async () => {
     await updateSettings(ws.id, { myob_mode: 'healthy', idempotency_guard: true });
@@ -64,5 +65,5 @@ describe.skipIf(!enabled)('posting to MYOB when responses get lost', () => {
     expect(result.status).toBe('failed');
     expect(result.last_error).toMatch(/inactive/);
     expect(result.sync?.log.at(-1)?.outcome).toBe('fatal');
-  }, 30_000);
+  }, 120_000);
 });
