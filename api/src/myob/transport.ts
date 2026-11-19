@@ -4,8 +4,8 @@ import { MOCK_BASE, FIRST_CREATE_HEADER, myobMock } from './mock.js';
 import { MyobClient, type Transport } from './client.js';
 import type { MyobMode } from '../../../shared/types.js';
 
-/** How long the client waits for MYOB. Short, so the demo does not stall. */
-export const CLIENT_TIMEOUT_MS = 2500;
+/** How long the client waits for MYOB. Short, so the demo does not stall; CI raises it for its slower link to the database. */
+export const CLIENT_TIMEOUT_MS = Number(process.env.MYOB_TIMEOUT_MS ?? 2500);
 
 export function mockTransport(mode: MyobMode): Transport {
   return async (req) => {

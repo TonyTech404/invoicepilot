@@ -33,5 +33,7 @@ jobs:
         run: npm test
         env:
           DATABASE_URL: ${{ env.TEST_DATABASE_URL }}
+          # Runners are far from the database; a slow reply must not look like a dropped one.
+          MYOB_TIMEOUT_MS: 8000
       - name: Build
         run: npm run build

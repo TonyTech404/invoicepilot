@@ -152,6 +152,26 @@ myobMock.get('/Purchase/Bill/Service/:uid', async (c) => {
   return c.json(billJson(c.get('base'), row));
 });
 
+// The chart of accounts and tax codes are fixed reference data: load them once per host.
+let reference: Promise<{
+  accounts: Map<string, { myob_uid: string; code: string; name: string; active: boolean }>;
+  taxCodes: Map<string, { myob_uid: string; code: string; rate: number }>;
+}> | null = null;
+
+function referenceData() {
+  reference ??= (async () => {
+    const [accounts, taxes] = await Promise.all([
+      db()<{ myob_uid: string; code: string; name: string; active: boolean }[]>`select myob_uid, code, name, active from accounts`,
+      db()<{ myob_uid: string; code: string; rate: number }[]>`select myob_uid, code, rate from tax_codes`,
+    ]);
+    return { accounts: new Map(accounts.map((a) => [a.myob_uid, a])), taxCodes: new Map(taxes.map((t) => [t.myob_uid, t])) };
+  })().catch((e) => {
+    reference = null;
+    throw e;
+  });
+  return reference;
+}
+
 interface BillRequest {
   Date?: string;
   SupplierInvoiceNumber?: string;
@@ -173,12 +193,7 @@ myobMock.post('/Purchase/Bill/Service', async (c) => {
   const [supplier] = await sql`select uid from myob_suppliers where uid = ${body.Supplier.UID}::uuid and company_file_id = ${cf}::uuid`;
   if (!supplier) return c.json(errorBody('ValidationError', 'The supplier was not found in this company file.'), 400);
 
-  const accounts = new Map(
-    (await sql<{ myob_uid: string; code: string; name: string; active: boolean }[]>`select myob_uid, code, name, active from accounts`).map((a) => [a.myob_uid, a]),
-  );
-  const taxCodes = new Map(
-    (await sql<{ myob_uid: string; code: string; rate: number }[]>`select myob_uid, code, rate from tax_codes`).map((t) => [t.myob_uid, t]),
-  );
+  const { accounts, taxCodes } = await referenceData();
 
   const lines: Array<{ description: string; total: number; account_uid: string; account_code: string; account_name: string; tax_uid: string; tax_code: string; rate: number }> = [];
   for (const [i, l] of body.Lines.entries()) {
