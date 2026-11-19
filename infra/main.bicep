@@ -29,6 +29,10 @@ param databaseUrl string
 @description('Shared secret the scheduled GitHub Action sends to /api/sync/run.')
 param cronSecret string
 
+@secure()
+@description('Shared with the Cloudflare Worker on the custom domain, so the API can trust the visitor IP it forwards.')
+param proxyKey string = ''
+
 @description('Who gets the budget alerts. Leave empty to skip the budget.')
 param budgetEmail string = ''
 
@@ -131,6 +135,7 @@ resource webSettings 'Microsoft.Web/staticSites/config@2023-12-01' = {
   properties: {
     DATABASE_URL: databaseUrl
     CRON_SECRET: cronSecret
+    PROXY_KEY: proxyKey
     DOCINTEL_ENDPOINT: docIntel.properties.endpoint
     DOCINTEL_KEY: docIntel.listKeys().key1
     AOAI_ENDPOINT: openAi.properties.endpoint

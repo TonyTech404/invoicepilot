@@ -23,6 +23,10 @@ export const env = {
   get openAiDeployment() {
     return process.env.AOAI_DEPLOYMENT ?? 'coder';
   },
+  /** Shared with the Cloudflare Worker that serves the custom domain. */
+  get proxyKey() {
+    return process.env.PROXY_KEY ?? '';
+  },
   get cronSecret() {
     return process.env.CRON_SECRET ?? '';
   },

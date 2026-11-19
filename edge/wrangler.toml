@@ -1,0 +1,8 @@
+# Cloudflare Worker for the custom domain. Deploy with:
+#   CLOUDFLARE_ACCOUNT_ID=<account> npx wrangler deploy
+#   npx wrangler secret put PROXY_KEY   # same value as the PROXY_KEY app setting in Azure
+name = "invoicepilot-edge"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+workers_dev = false
+routes = [{ pattern = "invoicepilot.buildwithanthony.com", custom_domain = true }]
