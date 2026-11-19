@@ -3,6 +3,7 @@
 Supplier invoices in, bills in MYOB out. InvoicePilot reads invoices with Azure AI Document Intelligence, suggests the account and GST code for every line with Azure OpenAI, puts each one in front of a person to check and approve, and posts approved bills to MYOB with retries that never pay a supplier twice.
 
 **Live demo: https://ashy-tree-0d409aa00.4.azurestaticapps.net** (each visitor gets their own copy of a sample company)
+**Walkthrough: [45-second video](https://github.com/TonyTech404/invoicepilot/releases/download/v1.0.0/invoicepilot-walkthrough.mp4)**, recorded on the live site
 
 ![Reviewing an invoice: the original on the left with the field being edited highlighted, extracted fields and AI-coded lines on the right](docs/screenshots/review.png)
 
