@@ -5,6 +5,7 @@ import { timingSafeEqual } from 'node:crypto';
 import { db } from './db.js';
 import { env } from './env.js';
 import { ExtractionError } from './docintel.js';
+import { clientIp } from './lib/ip.js';
 import {
   HttpError,
   approveInvoice,
@@ -40,7 +41,7 @@ app.onError((err, c) => {
 });
 
 app.use('*', async (c, next) => {
-  c.set('ip', (c.req.header('x-forwarded-for') ?? c.req.header('x-client-ip') ?? 'local').split(',')[0].trim().replace(/:\d+$/, ''));
+  c.set('ip', clientIp((name) => c.req.header(name), env.proxyKey));
   await next();
   c.header('cache-control', 'no-store');
 });

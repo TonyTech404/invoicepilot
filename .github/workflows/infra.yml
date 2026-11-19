@@ -24,17 +24,19 @@ jobs:
       - name: Preview changes
         run: |
           az deployment group what-if -g rg-invoicepilot -f infra/main.bicep \
-            -p databaseUrl="$DATABASE_URL" cronSecret="$CRON_SECRET" budgetEmail="$BUDGET_EMAIL"
+            -p databaseUrl="$DATABASE_URL" cronSecret="$CRON_SECRET" proxyKey="$PROXY_KEY" budgetEmail="$BUDGET_EMAIL"
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          PROXY_KEY: ${{ secrets.PROXY_KEY }}
           BUDGET_EMAIL: ${{ secrets.BUDGET_EMAIL }}
       - name: Deploy
         run: |
           az deployment group create -g rg-invoicepilot -n "main-${{ github.run_number }}" -f infra/main.bicep \
-            -p databaseUrl="$DATABASE_URL" cronSecret="$CRON_SECRET" budgetEmail="$BUDGET_EMAIL" \
+            -p databaseUrl="$DATABASE_URL" cronSecret="$CRON_SECRET" proxyKey="$PROXY_KEY" budgetEmail="$BUDGET_EMAIL" \
             --query properties.outputs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          PROXY_KEY: ${{ secrets.PROXY_KEY }}
           BUDGET_EMAIL: ${{ secrets.BUDGET_EMAIL }}
