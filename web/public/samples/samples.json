@@ -1,0 +1,62 @@
+[
+  {
+    "id": "highland-green",
+    "label": "Green coffee import",
+    "note": "Mixed GST: beans are GST-free, freight is not",
+    "supplier": "Highland Green Coffee Traders Pty Ltd",
+    "file": "highland-green.pdf",
+    "mime": "application/pdf",
+    "thumb": "highland-green.thumb.jpg",
+    "total": 11269.5
+  },
+  {
+    "id": "riverbend-dairy",
+    "label": "Weekly milk delivery",
+    "note": "All GST-free dairy",
+    "supplier": "Riverbend Dairy Co-operative",
+    "file": "riverbend-dairy.pdf",
+    "mime": "application/pdf",
+    "thumb": "riverbend-dairy.thumb.jpg",
+    "total": 575.1
+  },
+  {
+    "id": "packwell",
+    "label": "Coffee bags and labels",
+    "note": "Packaging with a setup fee",
+    "supplier": "Packwell Packaging Pty Ltd",
+    "file": "packwell.pdf",
+    "mime": "application/pdf",
+    "thumb": "packwell.thumb.jpg",
+    "total": 2596
+  },
+  {
+    "id": "coastline-freight",
+    "label": "Pallet freight",
+    "note": "ABN on this invoice has a typo",
+    "supplier": "Coastline Freight & Logistics",
+    "file": "coastline-freight.pdf",
+    "mime": "application/pdf",
+    "thumb": "coastline-freight.thumb.jpg",
+    "total": 308.94
+  },
+  {
+    "id": "crema-tech",
+    "label": "Espresso machine repair",
+    "note": "Parts and labour, one line is equipment",
+    "supplier": "Crema Tech Espresso Services",
+    "file": "crema-tech.pdf",
+    "mime": "application/pdf",
+    "thumb": "crema-tech.thumb.jpg",
+    "total": 2640.55
+  },
+  {
+    "id": "sparkline-receipt",
+    "label": "Phone photo of a receipt",
+    "note": "A crooked phone photo, not a PDF",
+    "supplier": "Sparkline Cleaning Supplies",
+    "file": "sparkline-receipt.jpg",
+    "mime": "image/jpeg",
+    "thumb": "sparkline-receipt.thumb.jpg",
+    "total": 212.52
+  }
+]
