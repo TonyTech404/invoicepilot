@@ -2,6 +2,12 @@
   "name": "@invoicepilot/web",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p . && vite build",
+    "typecheck": "tsc --noEmit -p .",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "pdfjs-dist": "^6.5.438",
     "react": "^19.3.1",

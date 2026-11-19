@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+
+/* Ledger paper: the accountant's columnar pad, cool green rather than café brown. */
+@theme {
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #f3f6f1;
+  --color-sheet: #ffffff;
+  --color-rule: #cfdccf;
+  --color-rule-soft: #e3ebe2;
+  --color-ink: #17241d;
+  --color-ink-soft: #4a5a51;
+  --color-ink-faint: #74837a;
+  --color-bottle: #1f5c46;
+  --color-bottle-deep: #164333;
+  --color-bottle-wash: #e2eee7;
+  --color-red-ink: #b42318;
+  --color-red-wash: #fbeceb;
+  --color-amber: #a15c07;
+  --color-amber-wash: #fbf1e1;
+  --color-slate: #3b5b7a;
+  --color-slate-wash: #e8eef4;
+  --color-highlight: #f5d547;
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-bottle);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+  ::selection {
+    background: var(--color-highlight);
+  }
+}
+
+@layer components {
+  /* Money and counts line up in columns. */
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    transition: background-color 120ms, border-color 120ms, color 120ms;
+  }
+  .btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .btn-primary {
+    background: var(--color-bottle);
+    color: #fff;
+  }
+  .btn-primary:not(:disabled):hover {
+    background: var(--color-bottle-deep);
+  }
+  .btn-quiet {
+    background: transparent;
+    color: var(--color-ink);
+    border: 1px solid var(--color-rule);
+  }
+  .btn-quiet:not(:disabled):hover {
+    background: var(--color-sheet);
+    border-color: var(--color-ink-faint);
+  }
+  .btn-danger {
+    background: transparent;
+    color: var(--color-red-ink);
+    border: 1px solid transparent;
+  }
+  .btn-danger:not(:disabled):hover {
+    background: var(--color-red-wash);
+  }
+
+  .field {
+    width: 100%;
+    height: 2.375rem;
+    padding: 0 0.625rem;
+    border: 1px solid var(--color-rule);
+    border-radius: 5px;
+    background: var(--color-sheet);
+    color: var(--color-ink);
+  }
+  .field:hover {
+    border-color: var(--color-ink-faint);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-bottle);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-bottle) 18%, transparent);
+  }
+  .field:disabled {
+    background: transparent;
+    border-color: transparent;
+    padding-left: 0;
+    color: var(--color-ink);
+    opacity: 1;
+  }
+
+  /* Ledger table: ruled rows, right-aligned money. */
+  .ledger {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .ledger th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: var(--color-ink-soft);
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1.5px solid var(--color-ink);
+  }
+  .ledger td {
+    padding: 0.7rem 0.75rem;
+    border-bottom: 1px solid var(--color-rule);
+    vertical-align: top;
+  }
+  .ledger tbody tr.link {
+    cursor: pointer;
+  }
+  .ledger tbody tr.link:hover td {
+    background: color-mix(in srgb, var(--color-sheet) 70%, transparent);
+  }
+
+  /* The document sits on the desk like paper. */
+  .sheet {
+    background: var(--color-sheet);
+    box-shadow:
+      0 1px 0 var(--color-rule),
+      0 10px 30px -12px rgb(23 36 29 / 0.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
