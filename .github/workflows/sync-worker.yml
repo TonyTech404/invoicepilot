@@ -1,0 +1,16 @@
+name: Sync worker
+
+# Picks up MYOB posts that are waiting to retry, and prunes old demo workspaces.
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run due jobs
+        run: |
+          curl -fsS -X POST "https://${{ vars.SWA_HOSTNAME }}/api/cron/sync" \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}"

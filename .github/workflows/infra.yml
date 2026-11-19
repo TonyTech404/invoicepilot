@@ -1,0 +1,40 @@
+name: Infrastructure
+
+on:
+  push:
+    branches: [main]
+    paths: ['infra/**']
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  bicep:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+      - name: Preview changes
+        run: |
+          az deployment group what-if -g rg-invoicepilot -f infra/main.bicep \
+            -p databaseUrl="$DATABASE_URL" cronSecret="$CRON_SECRET" budgetEmail="$BUDGET_EMAIL"
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          BUDGET_EMAIL: ${{ secrets.BUDGET_EMAIL }}
+      - name: Deploy
+        run: |
+          az deployment group create -g rg-invoicepilot -n "main-${{ github.run_number }}" -f infra/main.bicep \
+            -p databaseUrl="$DATABASE_URL" cronSecret="$CRON_SECRET" budgetEmail="$BUDGET_EMAIL" \
+            --query properties.outputs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          BUDGET_EMAIL: ${{ secrets.BUDGET_EMAIL }}
