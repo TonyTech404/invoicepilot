@@ -1,0 +1,762 @@
+{
+ "fields": {
+  "CustomerName": {
+   "type": "string",
+   "valueString": "NORTHBANK COFFEE",
+   "content": "NORTHBANK COFFEE",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      568,
+      777,
+      984,
+      749,
+      987,
+      786,
+      570,
+      814
+     ]
+    }
+   ],
+   "confidence": 0.548
+  },
+  "InvoiceDate": {
+   "type": "date",
+   "valueDate": "2026-11-15",
+   "content": "15/11/2026",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      411,
+      739,
+      667,
+      721,
+      670,
+      758,
+      414,
+      776
+     ]
+    }
+   ],
+   "confidence": 0.982
+  },
+  "InvoiceId": {
+   "type": "string",
+   "valueString": "R-118204",
+   "content": "R-118204",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      512,
+      686,
+      718,
+      671,
+      720,
+      707,
+      515,
+      721
+     ]
+    }
+   ],
+   "confidence": 0.981
+  },
+  "InvoiceTotal": {
+   "type": "currency",
+   "valueCurrency": {
+    "amount": 212.52,
+    "currencyCode": "AUD"
+   },
+   "content": "212.52",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      1306,
+      1690,
+      1470,
+      1680,
+      1473,
+      1717,
+      1309,
+      1728
+     ]
+    }
+   ],
+   "confidence": 0.971
+  },
+  "Items": {
+   "type": "array",
+   "valueArray": [
+    {
+     "type": "object",
+     "valueObject": {
+      "Amount": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 69.9,
+        "currencyCode": "AUD"
+       },
+       "content": "69.90",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          1271,
+          965,
+          1399,
+          956,
+          1401,
+          993,
+          1274,
+          1002
+         ]
+        }
+       ],
+       "confidence": 0.933
+      },
+      "Description": {
+       "type": "string",
+       "valueString": "Espresso machine\n100pk",
+       "content": "Espresso machine\n100pk",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          415,
+          912,
+          834,
+          883,
+          841,
+          974,
+          421,
+          1003
+         ]
+        }
+       ],
+       "confidence": 0.588
+      },
+      "Quantity": {
+       "type": "number",
+       "valueNumber": 2,
+       "content": "2",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          475,
+          1017,
+          498,
+          1016,
+          500,
+          1055,
+          477,
+          1056
+         ]
+        }
+       ],
+       "confidence": 0.852
+      },
+      "UnitPrice": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 34.95,
+        "currencyCode": "AUD"
+       },
+       "content": "34.95",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          583,
+          1011,
+          712,
+          1002,
+          714,
+          1042,
+          585,
+          1050
+         ]
+        }
+       ],
+       "confidence": 0.923
+      }
+     },
+     "content": "Espresso machine cleaning tablets\n100pk\n2 @ 34.95\n69.90",
+     "boundingRegions": [
+      {
+       "pageNumber": 1,
+       "polygon": [
+        415,
+        911,
+        1391,
+        844,
+        1402,
+        995,
+        426,
+        1062
+       ]
+      }
+     ],
+     "confidence": 0.346
+    },
+    {
+     "type": "object",
+     "valueObject": {
+      "Amount": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 55.5,
+        "currencyCode": "AUD"
+       },
+       "content": "55.50",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          1280,
+          1090,
+          1410,
+          1082,
+          1413,
+          1120,
+          1283,
+          1128
+         ]
+        }
+       ],
+       "confidence": 0.931
+      },
+      "Description": {
+       "type": "string",
+       "valueString": "Milk frother cleaner 1L",
+       "content": "Milk frother cleaner 1L",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          421,
+          1084,
+          1036,
+          1044,
+          1039,
+          1083,
+          424,
+          1124
+         ]
+        }
+       ],
+       "confidence": 0.916
+      },
+      "Quantity": {
+       "type": "number",
+       "valueNumber": 3,
+       "content": "3",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          481,
+          1144,
+          505,
+          1143,
+          507,
+          1182,
+          484,
+          1183
+         ]
+        }
+       ],
+       "confidence": 0.873
+      },
+      "UnitPrice": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 18.5,
+        "currencyCode": "AUD"
+       },
+       "content": "18.50",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          590,
+          1138,
+          719,
+          1129,
+          721,
+          1168,
+          592,
+          1177
+         ]
+        }
+       ],
+       "confidence": 0.922
+      }
+     },
+     "content": "Milk frother cleaner 1L\n3 @ 18.50\n55.50",
+     "boundingRegions": [
+      {
+       "pageNumber": 1,
+       "polygon": [
+        421,
+        1082,
+        1407,
+        1021,
+        1413,
+        1126,
+        428,
+        1187
+       ]
+      }
+     ],
+     "confidence": 0.827
+    },
+    {
+     "type": "object",
+     "valueObject": {
+      "Amount": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 42,
+        "currencyCode": "AUD"
+       },
+       "content": "42.00",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          1293,
+          1218,
+          1424,
+          1209,
+          1425,
+          1247,
+          1296,
+          1255
+         ]
+        }
+       ],
+       "confidence": 0.932
+      },
+      "Description": {
+       "type": "string",
+       "valueString": "Food-safe sanitiser 5L",
+       "content": "Food-safe sanitiser 5L",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          430,
+          1213,
+          1016,
+          1172,
+          1019,
+          1213,
+          433,
+          1254
+         ]
+        }
+       ],
+       "confidence": 0.92
+      },
+      "Quantity": {
+       "type": "number",
+       "valueNumber": 1,
+       "content": "1",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          488,
+          1273,
+          510,
+          1272,
+          513,
+          1311,
+          491,
+          1312
+         ]
+        }
+       ],
+       "confidence": 0.886
+      },
+      "UnitPrice": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 42,
+        "currencyCode": "AUD"
+       },
+       "content": "42.00",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          597,
+          1267,
+          728,
+          1257,
+          729,
+          1297,
+          599,
+          1306
+         ]
+        }
+       ],
+       "confidence": 0.923
+      }
+     },
+     "content": "Food-safe sanitiser 5L\n1 @ 42.00\n42.00",
+     "boundingRegions": [
+      {
+       "pageNumber": 1,
+       "polygon": [
+        430,
+        1213,
+        1420,
+        1145,
+        1427,
+        1249,
+        437,
+        1317
+       ]
+      }
+     ],
+     "confidence": 0.689
+    },
+    {
+     "type": "object",
+     "valueObject": {
+      "Amount": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 25.8,
+        "currencyCode": "AUD"
+       },
+       "content": "25.80",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          1303,
+          1348,
+          1436,
+          1339,
+          1439,
+          1378,
+          1306,
+          1386
+         ]
+        }
+       ],
+       "confidence": 0.931
+      },
+      "Description": {
+       "type": "string",
+       "valueString": "Microfibre cloths 10pk",
+       "content": "Microfibre cloths 10pk",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          433,
+          1340,
+          1029,
+          1300,
+          1032,
+          1345,
+          436,
+          1385
+         ]
+        }
+       ],
+       "confidence": 0.909
+      },
+      "Quantity": {
+       "type": "number",
+       "valueNumber": 2,
+       "content": "2",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          493,
+          1404,
+          517,
+          1403,
+          519,
+          1442,
+          495,
+          1442
+         ]
+        }
+       ],
+       "confidence": 0.852
+      },
+      "UnitPrice": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 12.9,
+        "currencyCode": "AUD"
+       },
+       "content": "12.90",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          604,
+          1397,
+          736,
+          1388,
+          737,
+          1427,
+          606,
+          1436
+         ]
+        }
+       ],
+       "confidence": 0.923
+      }
+     },
+     "content": "Microfibre cloths 10pk\n2 @ 12.90\n25.80",
+     "boundingRegions": [
+      {
+       "pageNumber": 1,
+       "polygon": [
+        433,
+        1340,
+        1432,
+        1273,
+        1439,
+        1381,
+        440,
+        1448
+       ]
+      }
+     ],
+     "confidence": 0.772
+    }
+   ]
+  },
+  "SubTotal": {
+   "type": "currency",
+   "valueCurrency": {
+    "amount": 193.2,
+    "currencyCode": "AUD"
+   },
+   "content": "193.20",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      1290,
+      1489,
+      1450,
+      1478,
+      1452,
+      1516,
+      1293,
+      1527
+     ]
+    }
+   ],
+   "confidence": 0.982
+  },
+  "TaxDetails": {
+   "type": "array",
+   "valueArray": [
+    {
+     "type": "object",
+     "valueObject": {
+      "Amount": {
+       "type": "currency",
+       "valueCurrency": {
+        "amount": 19.32,
+        "currencyCode": "AUD"
+       },
+       "content": "19.32",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          1329,
+          1620,
+          1464,
+          1612,
+          1466,
+          1650,
+          1332,
+          1659
+         ]
+        }
+       ],
+       "confidence": 0.922
+      },
+      "Rate": {
+       "type": "string",
+       "valueString": "10%",
+       "content": "10%",
+       "boundingRegions": [
+        {
+         "pageNumber": 1,
+         "polygon": [
+          563,
+          1676,
+          643,
+          1669,
+          644,
+          1709,
+          566,
+          1714
+         ]
+        }
+       ],
+       "confidence": 0.931
+      }
+     },
+     "content": "GST 10%\n19.32",
+     "boundingRegions": [
+      {
+       "pageNumber": 1,
+       "polygon": [
+        450,
+        1680,
+        1464,
+        1611,
+        1467,
+        1653,
+        453,
+        1722
+       ]
+      }
+     ],
+     "confidence": 0.895
+    }
+   ]
+  },
+  "TotalTax": {
+   "type": "currency",
+   "valueCurrency": {
+    "amount": 19.32,
+    "currencyCode": "AUD"
+   },
+   "content": "19.32",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      1329,
+      1620,
+      1464,
+      1612,
+      1466,
+      1650,
+      1332,
+      1659
+     ]
+    }
+   ],
+   "confidence": 0.978
+  },
+  "VendorAddress": {
+   "type": "address",
+   "content": "3/12 Euston Road\nAlexandria NSW 2015",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      623,
+      376,
+      1109,
+      342,
+      1114,
+      424,
+      629,
+      458
+     ]
+    }
+   ],
+   "confidence": 0.891,
+   "valueAddress": {
+    "houseNumber": "3/12",
+    "road": "Euston Road",
+    "postalCode": "2015",
+    "state": "NSW",
+    "streetAddress": "3/12 Euston Road",
+    "suburb": "Alexandria"
+   }
+  },
+  "VendorAddressRecipient": {
+   "type": "string",
+   "valueString": "SPARKLINE\nCLEANING SUPPLIES",
+   "content": "SPARKLINE\nCLEANING SUPPLIES",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      645,
+      272,
+      1075,
+      243,
+      1081,
+      333,
+      651,
+      362
+     ]
+    }
+   ],
+   "confidence": 0.927
+  },
+  "VendorName": {
+   "type": "string",
+   "valueString": "SPARKLINE\nCLEANING SUPPLIES",
+   "content": "SPARKLINE\nCLEANING SUPPLIES",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      645,
+      272,
+      1075,
+      243,
+      1081,
+      333,
+      651,
+      362
+     ]
+    }
+   ],
+   "confidence": 0.927
+  },
+  "VendorTaxId": {
+   "type": "string",
+   "valueString": "78 516 408 731",
+   "content": "78 516 408 731",
+   "boundingRegions": [
+    {
+     "pageNumber": 1,
+     "polygon": [
+      751,
+      506,
+      1106,
+      482,
+      1108,
+      518,
+      753,
+      542
+     ]
+    }
+   ],
+   "confidence": 0.916
+  }
+ },
+ "pages": [
+  {
+   "width": 1800,
+   "height": 2400,
+   "unit": "pixel"
+  }
+ ]
+}
