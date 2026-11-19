@@ -2,7 +2,7 @@
 
 Supplier invoices in, bills in MYOB out. InvoicePilot reads invoices with Azure AI Document Intelligence, suggests the account and GST code for every line with Azure OpenAI, puts each one in front of a person to check and approve, and posts approved bills to MYOB with retries that never pay a supplier twice.
 
-**Live demo: https://ashy-tree-0d409aa00.4.azurestaticapps.net** (each visitor gets their own copy of a sample company)
+**Live demo: https://invoicepilot.buildwithanthony.com** (each visitor gets their own copy of a sample company)
 **Walkthrough: [45-second video](https://github.com/TonyTech404/invoicepilot/releases/download/v1.0.0/invoicepilot-walkthrough.mp4)**, recorded on the live site
 
 ![Reviewing an invoice: the original on the left with the field being edited highlighted, extracted fields and AI-coded lines on the right](docs/screenshots/review.png)
@@ -57,6 +57,7 @@ More in [docs/architecture.md](docs/architecture.md).
 | AI | Azure AI Document Intelligence `prebuilt-invoice`, Azure OpenAI `gpt-5.4-mini` (Data Zone deployment) |
 | Infrastructure | Bicep ([`infra/main.bicep`](infra/main.bicep)): Static Web App, Document Intelligence, Azure OpenAI, Application Insights, Log Analytics, budget alert |
 | CI/CD | GitHub Actions: checks on every pull request, deploy on merge via OIDC (no Azure secrets stored), Bicep on infra changes, a 15-minute retry worker |
+| Domain | A Cloudflare Worker on `invoicepilot.buildwithanthony.com` forwards to Static Web Apps, passing the visitor's IP with a shared key so rate limits stay per visitor ([`edge/`](edge)) |
 
 ## Repository layout
 
@@ -73,6 +74,7 @@ api/            Hono API, Azure Functions entry, tests
     seed/         per-visitor sample company (from real model output)
   test/           unit tests, plus an integration test against Postgres
 web/            React app
+edge/           Cloudflare Worker for the custom domain
 shared/         types shared by API and web
 db/migrations/  SQL migrations
 infra/          Bicep
@@ -104,8 +106,10 @@ Regenerate the sample invoices with `npm run samples` (renders HTML to PDF with 
 ```bash
 az group create -n rg-invoicepilot -l australiaeast
 az deployment group create -g rg-invoicepilot -f infra/main.bicep \
-  -p databaseUrl="$DATABASE_URL" cronSecret="$CRON_SECRET" budgetEmail="you@example.com"
+  -p databaseUrl="$DATABASE_URL" cronSecret="$CRON_SECRET" proxyKey="$PROXY_KEY" budgetEmail="you@example.com"
 ```
+
+The custom domain is a Cloudflare Worker in [`edge/`](edge): `npx wrangler deploy`, then `npx wrangler secret put PROXY_KEY` with the same value as the `proxyKey` parameter.
 
 After that, merging to `main` deploys: the workflow logs in to Azure with OIDC, migrates the database, uploads the web app and API bundle to Static Web Apps, and waits for `/api/health` to report the new commit.
 
